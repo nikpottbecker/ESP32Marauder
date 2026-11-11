@@ -1,6 +1,6 @@
 #include "AXP192.h"
 
-#ifdef MARAUDER_M5STACK_CORE2_AWS
+#if defined(MARAUDER_M5STACK_CORE2_AWS) || defined(MARAUDER_C3_SUPERMINI)
   #define AXP192_WIRE Wire
 #else
   #define AXP192_WIRE Wire1
@@ -13,7 +13,7 @@ void AXP192::begin(void) {
     AXP192_WIRE.begin(21, 22);
     AXP192_WIRE.setClock(400000);
 
-    #ifdef MARAUDER_M5STACK_CORE2_AWS
+    #if defined(MARAUDER_M5STACK_CORE2_AWS) || defined(MARAUDER_C3_SUPERMINI)
     // Core2 power rails are initialized before display setup. The legacy
     // sequence below is for M5StickC, where LDO3 powers the LCD; on Core2
     // LDO3 powers the vibration motor instead.

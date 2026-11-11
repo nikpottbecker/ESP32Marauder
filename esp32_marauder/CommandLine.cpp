@@ -270,7 +270,18 @@ void CommandLine::runCommand(String input) {
     Serial.println("#" + input);
 
   LinkedList<String> cmd_args = this->parseCommand(input, " ");
-  
+
+  #ifdef SCAN_ONLY_BUILD
+    // Local scan-only build: transmit/attack features are refused outright.
+    if (cmd_args.size() > 0 &&
+        (cmd_args.get(0) == ATTACK_CMD || cmd_args.get(0) == BT_SPAM_CMD ||
+         cmd_args.get(0) == BT_SPOOFAT_CMD || cmd_args.get(0) == EVIL_PORTAL_CMD ||
+         cmd_args.get(0) == KARMA_CMD)) {
+      Serial.println("Disabled in this scan-only build.");
+      return;
+    }
+  #endif
+
   //// Admin commands
   // Help
   if (cmd_args.get(0) == HELP_CMD) {

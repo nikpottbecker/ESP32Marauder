@@ -21,6 +21,8 @@ constexpr uint8_t METADATA_END_MAGIC[METADATA_MAGIC_SIZE] = {
   #define MARAUDER_CHIP_ID "esp32c5"
 #elif defined(CONFIG_IDF_TARGET_ESP32C6)
   #define MARAUDER_CHIP_ID "esp32c6"
+#elif defined(CONFIG_IDF_TARGET_ESP32C3)
+  #define MARAUDER_CHIP_ID "esp32c3"
 #elif defined(CONFIG_IDF_TARGET_ESP32S3)
   #define MARAUDER_CHIP_ID "esp32s3"
 #elif defined(CONFIG_IDF_TARGET_ESP32S2)

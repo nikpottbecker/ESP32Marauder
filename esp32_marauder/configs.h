@@ -43,6 +43,7 @@
   //#define MARAUDER_PANCAKE
   //#define MARAUDER_MINI_V3
   //#define MARAUDER_M5_NANO_C6
+  //#define MARAUDER_C3_SUPERMINI // Unofficial local port: bare ESP32-C3, serial CLI only
   //#define DUAL_MINI_C5
   //#define MARAUDER_POOM
   // Waveshare ESP32-C5-Touch-LCD-3.5 board. Same silicon/panel class as the
@@ -143,6 +144,8 @@
     #define HARDWARE_NAME "Dual Mini C5"
   #elif defined(MARAUDER_M5_NANO_C6)
     #define HARDWARE_NAME "M5 Nano C6"
+  #elif defined(MARAUDER_C3_SUPERMINI)
+    #define HARDWARE_NAME "ESP32-C3 (unofficial)"
   #elif defined(MARAUDER_POOM)
     #define HARDWARE_NAME "POOM"
   #else
@@ -736,6 +739,13 @@
     #define HAS_NIMBLE_2
     #define HAS_IDF_3
     #define HAS_DIRECT_UPLOAD
+  #endif
+
+  #if defined(MARAUDER_C3_SUPERMINI)
+    #define SCAN_ONLY_BUILD
+    #define HAS_BT
+    #define HAS_NIMBLE_2
+    #define HAS_IDF_3
   #endif
 
   #if defined(MARAUDER_M5_NANO_C6)
